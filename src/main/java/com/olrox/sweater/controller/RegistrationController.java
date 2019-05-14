@@ -1,7 +1,7 @@
 package com.olrox.sweater.controller;
 
-import com.olrox.sweater.domain.Role;
-import com.olrox.sweater.domain.User;
+import com.olrox.sweater.entity.Role;
+import com.olrox.sweater.entity.User;
 import com.olrox.sweater.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -9,17 +9,17 @@
 
     <div>
         <form method="post">
+            <input type="text" id="text" name="text" placeholder="Введите сообщение"/>
+            <input type="text" id="tag" name="tag" placeholder="Тег" />
             <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-            <input type="text" id="text" placeholder="Введите сообщение"/>
-            <input type="text" id="tag" placeholder="Тег" />
             <button type="submit">Добавить</button>
         </form>
     </div>
 
 
     <form method="post" action="filter">
+        <input type="text" name="filter"/>
         <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-        <input type="text" name="filter">
         <button type="submit">Найти</button>
     </form>
     <div>Список сообщений</div>
@@ -28,6 +28,7 @@
                 <b>{{id}}</b>
                 <span>{{text}}</span>
                 <i>{{tag}}</i>
+                <strong>{{authorName}}</strong>
             </div>
         {{/messages}}
 </body>
