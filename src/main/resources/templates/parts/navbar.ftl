@@ -10,11 +10,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/login">Home<span class="sr-only">(current)</span></a>
             </li>
+
+            <#if user??>
+
             <li class="nav-item active">
                 <a class="nav-link" href="/main">Messages<span class="sr-only">(current)</span></a>
             </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/user-messages/${currentUserId}">My messages<span class="sr-only">(current)</span></a>
+                </li>
+            </#if>
+
             <#if isAdmin>
                 <li class="nav-item active">
                     <a class="nav-link" href="/user">User list<span class="sr-only">(current)</span></a>
