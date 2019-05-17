@@ -21,10 +21,12 @@ import java.util.Map;
 @Controller
 public class MainController {
     private final MessageRepository messageRepository;
+    private final ImageUploader imageUploader;
 
     @Autowired
-    public MainController(MessageRepository messageRepository) {
+    public MainController(MessageRepository messageRepository, ImageUploader imageUploader) {
         this.messageRepository = messageRepository;
+        this.imageUploader = imageUploader;
     }
 
     @GetMapping("/")
@@ -67,7 +69,7 @@ public class MainController {
         }
 
         else {
-            ControllerUtils.saveImage(message, file);
+            imageUploader.upload(message, file);
             model.addAttribute("message", null);
             messageRepository.save(message);
         }

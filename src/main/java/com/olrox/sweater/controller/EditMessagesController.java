@@ -2,6 +2,7 @@ package com.olrox.sweater.controller;
 
 import com.olrox.sweater.entity.Message;
 import com.olrox.sweater.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,13 @@ import java.util.Set;
 
 @Controller
 public class EditMessagesController {
+    private final ImageUploader imageUploader;
+
+    @Autowired
+    public EditMessagesController(ImageUploader imageUploader) {
+        this.imageUploader = imageUploader;
+    }
+
     @GetMapping("/user-messages/{user}")
     public String userMessage(
             @AuthenticationPrincipal User currentUser,
@@ -51,7 +59,7 @@ public class EditMessagesController {
                 message.setTag(tag);
             }
 
-            ControllerUtils.saveImage(message, file);
+            imageUploader.upload(message, file);
         }
 
         return "redirect:/user-messages/" + user;
