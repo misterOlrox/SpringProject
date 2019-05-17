@@ -1,3 +1,4 @@
+ALTER DATABASE sweater CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 drop table if exists message;
 drop table if exists user_role;
 drop table if exists user_table;
@@ -26,3 +27,5 @@ create table user_table (
 
 alter table message add constraint message_user_fk foreign key (user_id) references user_table (id);
 alter table user_role add constraint user_role_user_fk foreign key (user_id) references user_table (id);
+
+
